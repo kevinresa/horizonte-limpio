@@ -1,0 +1,29 @@
+---
+const { title, subtitle } = Astro.props;
+---
+
+<div
+  class="bg-white rounded-xl border border-[#8fb9cc] shadow-sm p-6 
+         flex flex-col items-center text-center w-full h-full max-w-[350px]
+         transition-transform duration-300 ease-out hover:scale-[1.05] hover:shadow-md"
+>
+
+  <!-- ICONO DENTRO DEL CÍRCULO -->
+  <div class="mb-4 flex justify-center">
+    <div class="bg-[#c4dceb] rounded-full p-4 flex items-center justify-center">
+      <div class="text-[#224e69]">
+        <slot name="icon"></slot>
+      </div>
+    </div>
+  </div>
+
+  <!-- TÍTULO -->
+  <h3 class="text-lg font-semibold text-[#0d1b2a]">
+    {title}
+  </h3>
+
+  <!-- SUBTÍTULO -->
+  <p class="text-sm text-gray-600 mt-2">
+    {subtitle}
+  </p>
+</div>

@@ -1,0 +1,11 @@
+# Permite a todos los bots acceder
+User-agent: *
+Allow: /
+
+# Evita indexar páginas sensibles si las añades en el futuro
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+
+

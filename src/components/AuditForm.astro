@@ -1,0 +1,222 @@
+---
+// No props needed
+---
+
+<div class="max-w-2xl mx-auto bg-white shadow-md rounded-xl p-6 md:p-10">
+
+  <h2 class="text-3xl font-bold text-center text-[#0d1b2a] mb-4">
+    Evalúa tu consumo de alcohol
+  </h2>
+
+  <p class="text-center text-gray-600 mb-10">
+        Este cuestionario está diseñado para ayudarte a reflexionar sobre cómo te relacionas con el alcohol.
+        A través de unas preguntas sencillas.
+  </p>
+
+    <p class="text-center text-gray-600 mb-10">
+        No se trata de juzgarte, sino de ofrecerte una herramienta para conocerte mejor.
+  </p>
+
+  <form id="audit-form" class="space-y-6">
+
+    <!-- TEMPLATE DE PREGUNTA -->
+    <!-- se renderizan dinámicamente desde JS -->
+
+  </form>
+
+  <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+    <button id="btn-submit"
+      class="bg-[#317198] hover:bg-[#224e69] text-white font-semibold px-6 py-3 rounded-lg transition">
+      Calcular resultado
+    </button>
+
+    <button id="btn-reset"
+      class="border border-[#317198] text-[#317198] hover:bg-[#224e69] hover:text-white font-semibold px-6 py-3 rounded-lg transition">
+      Limpiar respuestas
+    </button>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="audit-result" class="mt-10 text-center text-lg font-medium hidden"></div>
+
+</div>
+
+<script>
+  // ---- DATA DE PREGUNTAS ----
+  const questions = [
+    {
+      text: "¿Con qué frecuencia consume bebidas que contienen alcohol?",
+      options: [
+        { label: "Nunca", val: 0 },
+        { label: "Mensualmente o menos", val: 1 },
+        { label: "De 2 a 4 veces al mes", val: 2 },
+        { label: "De 2 a 3 veces a la semana", val: 3 },
+        { label: "4 o más veces a la semana", val: 4 }
+      ]
+    },
+    {
+      text: "¿Cuántas bebidas alcohólicas toma en un día normal?",
+      options: [
+        { label: "1 o 2", val: 0 },
+        { label: "3 o 4", val: 1 },
+        { label: "5 o 6", val: 2 },
+        { label: "De 7 a 9", val: 3 },
+        { label: "10 o más", val: 4 }
+      ]
+    },
+    {
+      text: "¿Con qué frecuencia toma 5 o más consumiciones en una ocasión?",
+      options: [
+        { label: "Nunca", val: 0 },
+        { label: "Menos que mensualmente", val: 1 },
+        { label: "Mensualmente", val: 2 },
+        { label: "Semanalmente", val: 3 },
+        { label: "A diario o casi a diario", val: 4 }
+      ]
+    },
+    {
+      text: "¿En el último año no fue capaz de dejar de beber una vez que había empezado?",
+      options: [
+        { label: "Nunca", val: 0 },
+        { label: "Menos que mensualmente", val: 1 },
+        { label: "Mensualmente", val: 2 },
+        { label: "Semanalmente", val: 3 },
+        { label: "A diario o casi a diario", val: 4 }
+      ]
+    },
+    {
+      text: "¿En el último año no ha sido capaz de hacer lo esperado por culpa de la bebida?",
+      options: [
+        { label: "Nunca", val: 0 },
+        { label: "Menos que mensualmente", val: 1 },
+        { label: "Mensualmente", val: 2 },
+        { label: "Semanalmente", val: 3 },
+        { label: "A diario o casi a diario", val: 4 }
+      ]
+    },
+    {
+      text: "¿Ha necesitado un trago por la mañana para ponerse en marcha?",
+      options: [
+        { label: "Nunca", val: 0 },
+        { label: "Menos que mensualmente", val: 1 },
+        { label: "Mensualmente", val: 2 },
+        { label: "Semanalmente", val: 3 },
+        { label: "A diario o casi a diario", val: 4 }
+      ]
+    },
+    {
+      text: "¿Se ha sentido culpable o arrepentido después de beber?",
+      options: [
+        { label: "Nunca", val: 0 },
+        { label: "Menos que mensualmente", val: 1 },
+        { label: "Mensualmente", val: 2 },
+        { label: "Semanalmente", val: 3 },
+        { label: "A diario o casi a diario", val: 4 }
+      ]
+    },
+    {
+      text: "¿Ha olvidado lo ocurrido la noche anterior por el alcohol?",
+      options: [
+        { label: "Nunca", val: 0 },
+        { label: "Menos que mensualmente", val: 1 },
+        { label: "Mensualmente", val: 2 },
+        { label: "Semanalmente", val: 3 },
+        { label: "A diario o casi a diario", val: 4 }
+      ]
+    },
+    {
+      text: "¿Usted o alguien más ha resultado lesionado/a por su consumo?",
+      options: [
+        { label: "No", val: 0 },
+        { label: "Sí, pero no en el último año", val: 2 },
+        { label: "Sí, durante el último año", val: 4 }
+      ]
+    },
+    {
+      text: "¿Algún familiar, amigo o profesional le ha sugerido reducir o preocuparse por su consumo?",
+      options: [
+        { label: "No", val: 0 },
+        { label: "Sí, pero no en el último año", val: 2 },
+        { label: "Sí, durante el último año", val: 4 }
+      ]
+    }
+  ];
+
+  const form = document.getElementById("audit-form");
+
+  // Render dinámico de preguntas
+  questions.forEach((q, i) => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = `
+      <label class="block font-medium mb-1">${q.text}</label>
+      <select data-id="${i}"
+        class="w-full border rounded-lg p-3 text-gray-700 bg-gray-50">
+        ${q.options.map(op => `<option value="${op.val}">${op.label}</option>`).join("")}
+      </select>
+    `;
+    form?.appendChild(wrapper);
+  });
+
+
+  // ---- BOTÓN CALCULAR ----
+document.getElementById("btn-submit")?.addEventListener("click", () => {
+  let total = 0;
+
+  const selects = form?.querySelectorAll("select");
+  selects?.forEach(s => total += Number(s.value));
+
+  const resultBox = document.getElementById("audit-result");
+
+  let title = "";
+  let desc = "";
+  let color = "";
+  let emoji = "";
+  let extraInfo = "";
+
+  if (total <= 7) {
+    title = "Riesgo Bajo";
+    desc = "Probablemente no tengas un problema con el alcohol.";
+    color = "bg-green-100 border-green-500 text-green-700";
+    emoji = "😊";
+  } 
+  else if (total <= 15) {
+    title = "Riesgo Medio";
+    desc = "En ocasiones podrías beber demasiado. Considera reducir.";
+    color = "bg-yellow-100 border-yellow-500 text-yellow-700";
+    emoji = "😐";
+    extraInfo = `<p class="mt-2 text-sm">Ponte en contacto con este número <strong>918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.</p>`;
+  } 
+  else if (total <= 19) {
+    title = "Riesgo Alto";
+    desc = "Tu consumo está causando daños. Es recomendable buscar ayuda profesional.";
+    color = "bg-orange-100 border-orange-500 text-orange-700";
+    emoji = "😟";
+    extraInfo = `<p class="mt-2 text-sm">Ponte en contacto con este número <strong>918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.</p>`;
+  } 
+  else {
+    title = "Probable Adicción";
+    desc = "Es muy recomendable acudir a un profesional sanitario.";
+    color = "bg-red-100 border-red-500 text-red-700";
+    emoji = "😞";
+    extraInfo = `<p class="mt-2 text-sm">Ponte en contacto con este número <strong>918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.</p>`;
+  }
+
+  resultBox.innerHTML = `
+    <div class="border-l-4 p-4 rounded ${color}">
+      <p class="text-xl font-bold">${emoji} ${title}</p>
+      <p class="mt-1">${desc}</p>
+      <p class="mt-1 font-semibold">Puntuación total: <strong>${total}</strong></p>
+      ${extraInfo}
+    </div>
+  `;
+
+  resultBox?.classList.remove("hidden");
+});
+
+
+  // ---- BOTÓN RESET ----
+  document.getElementById("btn-reset").addEventListener("click", () => {
+    form?.reset();
+    document.getElementById("audit-result").classList.add("hidden");
+  });
+</script>
