@@ -10,7 +10,7 @@ import MapComponent from "../components/MapComponent.jsx";
 
 
     <!---------------------------------------- HERO  ------------------------------------------>
-    <section
+    <section id="hero"
       class="relative h-[70vh] flex items-center justify-center text-center text-white"
       style="background-image: url('/img/hero.webp'); background-size: cover; background-position: center;"
     >
@@ -28,7 +28,7 @@ import MapComponent from "../components/MapComponent.jsx";
         <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
           
           <!-- Botón principal -->
-          <a href="/test"
+          <a href="/#test"
             class="inline-block bg-[#1e6aa6] hover:bg-[#15527e] 
                     transition text-white font-semibold px-6 py-3 
                     rounded-lg shadow-md hover:shadow-lg">
@@ -36,7 +36,7 @@ import MapComponent from "../components/MapComponent.jsx";
           </a>
 
           <!-- Botón secundario -->
-          <a href="/mapa"
+          <a href="/#mapa"
             class="inline-block bg-white/10 border border-white/30 text-white 
                     font-semibold px-6 py-3 rounded-lg 
                     hover:bg-white/20 backdrop-blur-sm transition shadow-md hover:shadow-lg">
@@ -52,29 +52,29 @@ import MapComponent from "../components/MapComponent.jsx";
 
 
    <!---------------------------------------- Quienes somos  ------------------------------------------>
-<section class="py-20 bg-base">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-4xl font-bold text-[#0d1b2a] mb-8">¿Quiénes somos?</h2>
+  <section id="quienes-somos" class="py-20 bg-base">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-[#0d1b2a] mb-8">¿Quiénes somos?</h2>
 
-    <p class="text-gray-700 text-lg leading-relaxed mb-6">
-      Horizonte Limpio es un proyecto creado por estudiantes de segundo de Enfermería con el objetivo de promover un consumo responsable y reducir los riesgos asociados al alcohol entre jóvenes de 15 a 35 años en Valdemoro.
-    </p>
+      <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Horizonte Limpio es un proyecto creado por estudiantes de segundo de Enfermería con el objetivo de promover un consumo responsable y reducir los riesgos asociados al alcohol entre jóvenes de 15 a 35 años en Valdemoro.
+      </p>
 
-    <p class="text-gray-700 text-lg leading-relaxed mb-6">
-      Creemos en una educación para la salud cercana, accesible y adaptada al día a día. Por eso ofrecemos información clara y actualizada, explicada con un lenguaje sencillo y orientada a que cada joven pueda tomar decisiones informadas sobre su bienestar.
-    </p>
+      <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Creemos en una educación para la salud cercana, accesible y adaptada al día a día. Por eso ofrecemos información clara y actualizada, explicada con un lenguaje sencillo y orientada a que cada joven pueda tomar decisiones informadas sobre su bienestar.
+      </p>
 
-    <p class="text-gray-700 text-lg leading-relaxed">
-      Nuestro propósito es acompañarte, acercarte a los recursos de tu comunidad y ayudarte a disfrutar de tu ocio de forma más segura, con autonomía y cuidando tu salud física, mental y emocional.
-    </p>
-  </div>
-</section>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        Nuestro propósito es acompañarte, acercarte a los recursos de tu comunidad y ayudarte a disfrutar de tu ocio de forma más segura, con autonomía y cuidando tu salud física, mental y emocional.
+      </p>
+    </div>
+  </section>
 
 
 
   
   <!---------------------------------------------- CARDS  -------------------------------------------->
-  <section class="py-16 bg-white">
+  <section id="consecuencias" class="py-16 bg-white">
     <h2 class="text-3xl md:text-4xl font-semibold text-center text-[#0d1b2a] mb-12">
       Consecuencias del alcohol que quizás no conoces
     </h2>
@@ -177,13 +177,13 @@ import MapComponent from "../components/MapComponent.jsx";
   </section>
 
     <!---------------------------------------------- Fomulario  -------------------------------------------->
-  <section class="py-16 bg-base">
+  <section id="test" class="py-16 bg-base">
     <AuditForm />
   </section>
 
 
   <!---------------------------------------------- MAPA  -------------------------------------------->
-  <section class="py-16 px-4 bg-white">
+  <section id="mapa" class="py-16 px-4 bg-white">
     <h1 class="text-3xl md:text-4xl font-bold text-center text-[#0d1b2a] mb-10">
       Encuentra ayuda cerca de ti
     </h1>

@@ -53,15 +53,16 @@ export default function MapComponent() {
           coords: [40.1910, -3.6789],
           address: "Plaza de la Constitución, 2-3, 28341 Valdemoro, Madrid"
         },
+
         { 
-          name: "Biosense Terapia. Hipnosis Clínica", 
-          coords: [40.4065, -3.6760],
-          address: "C/ del Alcalde Sainz de Baranda, 43, Bajo 5, Retiro, 28009 Madrid"
+          name: "A & B Psicólogos", 
+          coords: [40.1888, -3.6805],
+          address: "Calle Federico Marín, 24 - 3.° C, 28341 Valdemoro, Madrid"
         },
         { 
-          name: "CAID - Centro de Atención Integral a las Drogodependencias Valdemoro", 
-          coords: [40.1127, -3.7000],
-          address: "C/ Dr. Barraquer, s/n, 2°, Madrid"
+          name: "Centro de Salud Mental Valdemoro", 
+          coords: [40.1872, -3.6820],
+          address: "Avenida Reyes Católicos 21, 28342 Valdemoro, Madrid"
         },
         { 
           name: "Centro de Salud Valdemoro", 

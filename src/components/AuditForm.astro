@@ -184,21 +184,42 @@ document.getElementById("btn-submit")?.addEventListener("click", () => {
     desc = "En ocasiones podrías beber demasiado. Considera reducir.";
     color = "bg-yellow-100 border-yellow-500 text-yellow-700";
     emoji = "😐";
-    extraInfo = `<p class="mt-2 text-sm">Ponte en contacto con este número <strong>918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.</p>`;
+    extraInfo = `
+      <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-start">
+        <span class="text-2xl mr-2">ℹ️</span>
+        <p class="text-lg text-blue-800">
+          Ponte en contacto con este número <strong class="text-xl">918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.
+        </p>
+      </div>
+    `;
   } 
   else if (total <= 19) {
     title = "Riesgo Alto";
     desc = "Tu consumo está causando daños. Es recomendable buscar ayuda profesional.";
     color = "bg-orange-100 border-orange-500 text-orange-700";
     emoji = "😟";
-    extraInfo = `<p class="mt-2 text-sm">Ponte en contacto con este número <strong>918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.</p>`;
+    extraInfo = `
+      <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-start">
+        <span class="text-2xl mr-2">ℹ️</span>
+        <p class="text-lg text-blue-800">
+          Ponte en contacto con este número <strong class="text-xl">918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.
+        </p>
+      </div>
+    `;
   } 
   else {
     title = "Probable Adicción";
     desc = "Es muy recomendable acudir a un profesional sanitario.";
     color = "bg-red-100 border-red-500 text-red-700";
     emoji = "😞";
-    extraInfo = `<p class="mt-2 text-sm">Ponte en contacto con este número <strong>918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.</p>`;
+    extraInfo = `
+      <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-start">
+        <span class="text-2xl mr-2">ℹ️</span>
+        <p class="text-lg text-blue-800">
+          Ponte en contacto con este número <strong class="text-xl">918018400</strong> para recibir orientación, apoyo y actividades específicas de prevención del consumo de alcohol.
+        </p>
+      </div>
+    `;
   }
 
   resultBox.innerHTML = `

@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
 .bg-base {
   background-color: #c4dceb;
 }
 
+:root {
+  scroll-padding-top: 90px; /* altura del header */
+}
