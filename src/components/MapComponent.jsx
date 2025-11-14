@@ -46,7 +46,7 @@ export default function MapComponent() {
         { 
           name: "Centro de Salud El Restón", 
           coords: [40.1904, -3.6771],
-          address: "Av. del Mediterráneo, 1, 28342 Valdemoro, Madrid"
+          address: "Av. del Mediterráneo, 1, 28342 Valdemoro, Madrid",
           icon: redIcon 
         },
         { 
@@ -68,7 +68,7 @@ export default function MapComponent() {
         { 
           name: "Centro de Salud Valdemoro", 
           coords: [40.1890, -3.6810],
-          address: "C/ Parla, 16, Valdemoro, Madrid",
+          address: "C/ Parla, 16, Valdemoro, Madrid"
    
         }
       ];
